@@ -43,7 +43,7 @@ def upload_artifact():
         print(f"Mengunduh seluruh artefak dari Run ID DagsHub: {run_id}")
 
         #unduh seluruh artefak dari dagshub ke lokal sementara
-        local_dir = "temp_all_artifacts(
+        local_dir = "temp_all_artifacts"
         mlflow.artifacts.download_artifacts(
             artifact_uri = f"runs:/{run_id}",
             dst_path=local_dir
