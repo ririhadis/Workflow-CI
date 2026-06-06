@@ -71,7 +71,7 @@ jobs:
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
         run: |
-          python MLproject/upload_to_gdrive.py
+          python MLProject/upload_to_gdrive.py
 
       #Build Docker Model
       - name : Build Docker Model
