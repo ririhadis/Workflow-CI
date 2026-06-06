@@ -111,7 +111,7 @@ jobs:
           RUN_ID: ${{ env.RUN_ID }}
         run: |
           python -c "import dagshub; dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
-          mlflow models build-docker --model-uri "runs:/$RUN_ID/kmeans_model" --name "kmeans_api" --enable-mlserver
+          mlflow models build-docker --model-uri "runs:/$RUN_ID/kmeans_model" --name "kmeans_api" --enable-mlserver --env-manager=local 
 
       #Login to Docker Hub
       - name: Log in to Docker Hub
