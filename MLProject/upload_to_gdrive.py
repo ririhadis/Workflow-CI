@@ -73,4 +73,4 @@ def upload_artifact():
         print(f"Proses gagal: {e}")
 
 if __name__ == "__main__":
-    upload_artifacts_to_gdrive()
+    upload_artifact()
