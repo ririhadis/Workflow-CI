@@ -34,27 +34,28 @@ jobs:
       #Run as mlflow project
       - name: Run mlflow project
         env:
-          #Mengarahkan mlflow langsung ke repositori dagshub
-          MLFLOW_TRACKING_URI : "https://dagshub.com"
-          #Kredensial tambahan agar MLflow mengunggah data ke server Dagshub
-          MLFLOW_TRACKING_USERNAME: "ririhadis"
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
+          #Mengkonfigurasi URI pelacakan otomatis leawt kode python
+          python -c "import dagshub;, dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
+
+          #menjalankan mlflow secara lokal dengan URI yang sudah dikonfigurasi
           mlflow run MLProject --env-manager=local
 
       #Get latest run_id
       - name: Get latest MLflow run_id from DagsHub
         env: 
-          MLFLOW_TRACKING_URI: "https://dagshub.com"
-          MLFLOW_TRACKING_USERNAME: "ririhadis"
           MLFLOW_TRACKING_PASSWORD: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
+          #Mendapatkan kembali URI otomatis
+          python -c "import dagshub;, dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
+          
           RUN_ID=$(python -c "
           import mlflow
           #Eksperimen default (ID: '0')
           runs = mlflow.search_runs(experiment_ids=['0'], order_by=['start_time DESC'], max_results=1)
           if not runs.empty:
-            print(runs.iloc[0]['runs_id'])
+            print(runs.iloc[0]['run_id'])
           ")
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
           echo "Latest run_id from DagsHub: $RUN_ID"
