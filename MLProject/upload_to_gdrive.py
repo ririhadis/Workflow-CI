@@ -12,7 +12,7 @@ def upload_artifact():
     creds_json = os.environ.get('GDRIVE_CREDENTIALS')
     folder_id = os.environ.get('GDRIVE_FOLDER_ID')
 
-    if not cred_json or not folder_id:
+    if not creds_json or not folder_id:
         print("Eror: Kredensial atau Folder ID Google Drive tidak ditemukan")
 
     #menghubungkan mlflow ke repositori dagshub
