@@ -73,4 +73,4 @@ def upload_artifact():
         print(f"Proses gagal: {e}")
 
 if __name__ == "__main__":
-    get_all_artifacts_from_dagshub_and_upload()
+    get_all_artifacts_and_upload()
