@@ -9,6 +9,5 @@ entry_points:
 		init: {type: string, default: "k-means++"}
 		max_iter: {type: int, default: 300}
 		dataset: {type: string, default: "data_preprocessing.csv"}
-    command: >
-		python model_tuning.py --n_clusters {n_clusters} --init {init} --max_iter {max_iter} --dataset {dataset}
+    command: "python model_tuning.py" --n_clusters {n_clusters} --init {init} --max_iter {max_iter} --dataset {dataset}
         
