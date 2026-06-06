@@ -45,7 +45,7 @@ mlflow_dataset = mlflow.data.from_pandas(
     df_model, name='renewable_energy_features')
 
 #parameter tunig
-with mlflow.start_run():
+with mlflow.start_run(nested=True):
     #log informasi dataset kedalam run saat ini
     mlflow.log_input(mlflow_dataset, context='training')
     
