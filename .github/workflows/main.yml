@@ -111,7 +111,7 @@ jobs:
           RUN_ID: ${{ env.RUN_ID }}
         run: |
           python -c "import dagshub; dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
-          mlflow models build-docker --model-uri "runs:/$RUN_ID/kmeans_model" --name "cc" --enable-mlserver
+          mlflow models build-docker --model-uri "runs:/$RUN_ID/kmeans_model" --name "kmeans_api" --enable-mlserver
 
       #Login to Docker Hub
       - name: Log in to Docker Hub
@@ -123,9 +123,9 @@ jobs:
       #Tag the Docker Image
       - name : Tag Docker Image
         run: |
-          docker tag cc ${{ secrets.DOCKER_HUB_USERNAME }}/cc:latest
+          docker tag cc ${{ secrets.DOCKER_HUB_USERNAME }}/kmeans_api:latest
 
       #Push Docker image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/cc:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/kmeans_api:latest
