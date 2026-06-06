@@ -123,7 +123,7 @@ jobs:
       #Tag the Docker Image
       - name : Tag Docker Image
         run: |
-          docker tag cc ${{ secrets.DOCKER_HUB_USERNAME }}/kmeans_api:latest
+          docker tag kmeans_api ${{ secrets.DOCKER_HUB_USERNAME }}/kmeans_api:latest
 
       #Push Docker image to Docker Hub
       - name: Push Docker Image
