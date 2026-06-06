@@ -5,8 +5,8 @@ conda_env: conda.yaml
 entry_points:
   main:
     parameters:
-      n_clusters: {type: int, default:4}
-	  init: {type: string, default: "k-means++"}
-	  max_iter: {type: int, default: 300}
-	  dataset: {type: string, default: "data_preprocessing.csv"}
+     n_clusters: {type: int, default:4}
+     init: {type: string, default: "k-means++"}
+     max_iter: {type: int, default: 300}
+     dataset: {type: string, default: "data_preprocessing.csv"}
     command: "python model_tuning.py --n_clusters {n_clusters} --init {init} --max_iter {max_iter} --dataset {dataset}"
