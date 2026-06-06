@@ -9,7 +9,7 @@ from googleapiclient.http import MediaFileUpload
 
 def upload_artifact():
     #kredensial environment variable yang dikirim YAML
-    cred_json = os.environ.get('GDRIVE_CREDENTIALS')
+    creds_json = os.environ.get('GDRIVE_CREDENTIALS')
     folder_id = os.environ.get('GDRIVE_FOLDER_ID')
 
     if not cred_json or not folder_id:
@@ -27,7 +27,7 @@ def upload_artifact():
     creds_dict = json.loads(creds_json)
     creds = service_account.Credentials.from_service_account_info(
         creds_dict,
-        scopes =['https://googleapis.com']
+        scopes = ['https://googleapis.com']
     )
 
     drive_service = build('drive', 'v3', credentials=creds)
@@ -62,7 +62,7 @@ def upload_artifact():
 
         media = MediaFileUpload(archive_name, mimetype='application/gzip', resumable=True)
         print("Mengunggah arsip ke Google drive")
-        file = drive_service.files().cretae(body=file_metadata, media_body=media, fields='id').execute()
+        file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
         print("Sukes mengunggah")
 
         #bersihkan file sampah lokal di runner setelah sukses
