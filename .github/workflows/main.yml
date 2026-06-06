@@ -50,7 +50,7 @@ jobs:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
         run: |
           #Mendapatkan kembali URI otomatis
-          python -c "import dagshub;, dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
+          python -c "import dagshub, dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
           
           RUN_ID=$(python -c "
           import mlflow
@@ -79,7 +79,7 @@ jobs:
           DAGSHUB_USER_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
           RUN_ID: ${{ env.RUN_ID }}
         run: |
-          python -c "import dagshub; dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
+          python -c "import dagshub, dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
           mlflow models build-docker --model-uri "runs:/$RUN_ID/kmeans_model" --name "cc" --enable-mlserver
 
       #Login to Docker Hub
