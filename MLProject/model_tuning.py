@@ -26,7 +26,7 @@ parser.add_argument('--n_clusters', type=int, default= 4)
 args, unknown = parser.parse_known_args()
 
 #Menghubungkan ke dagshub
-dagshub.init(repo_owner="ririhadis", repo_name="global_energy", mlflow=True)
+#dagshub.init(repo_owner="ririhadis", repo_name="global_energy", mlflow=True)
 
 #Membuat MLflow Eksperiment
 #mlflow.set_experiment("Global Renewable Energy Transition from 200 to 2025")
