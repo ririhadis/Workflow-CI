@@ -44,8 +44,10 @@ jobs:
           #Mengkonfigurasi URI pelacakan otomatis leawt kode python
           python -c "import dagshub; dagshub.init(repo_owner='ririhadis', repo_name='global_energy', mlflow=True)"
 
+          cp MLProject/data_preprocessing.csv
+          
           #menjalankan mlflow secara lokal dengan URI yang sudah dikonfigurasi
-          mlflow run MLProject --env-manager=local -P dataset=MLProject/data_preprocessing.csv
+          mlflow run MLProject --env-manager=local 
 
       #Get latest run_id
       - name: Get latest MLflow run_id from DagsHub
