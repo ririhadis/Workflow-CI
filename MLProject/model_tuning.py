@@ -1,4 +1,5 @@
 import itertools
+import argparse
 import mlflow
 from mlflow.data.pandas_dataset import PandasDataset
 from mlflow.models import infer_signature
@@ -16,13 +17,21 @@ import matplotlib.pyplot as plt
 #else:
 #    mlflow.set_tracking_uri("http://127.0.0.1:5000/")
 
+parser = argparse.ArgumentParser()
+parser.add_init =True
+parser.add_argument('--dataset', type=str, default= 'data_preprocessing.csv')
+parser.add_argument('--init', type=str, default= 'k-means++')
+parser.add_argument('--max_iter', type=int, default= 300)
+parser.add_argument('--n_clusters', type=int, default= 4)
+args, unknown = parser.parse_known_args()
+
 #Menghubungkan ke dagshub
 dagshub.init(repo_owner="ririhadis", repo_name="global_energy", mlflow=True)
 
 #Membuat MLflow Eksperiment
 mlflow.set_experiment("Global Renewable Energy Transition from 200 to 2025")
 
-df = pd.read_csv(r'C:\Users\AXIOO\Proyek Membangun Machine Learning\Membangun Model\data_preprocessing.csv')
+df = pd.read_csv(args.dataset)
 
 fitur = ['income_group', 'population', 'gdp_usd', 'total_electricity_generation_twh', 'electricity_demand_twh',
     'solar_electricity_twh', 'wind_electricity_twh', 'renewables_electricity_twh', 'hydro_electricity_twh', 'nuclear_electricity_twh',
