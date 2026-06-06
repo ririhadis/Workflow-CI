@@ -5,7 +5,7 @@ conda_env: conda.yaml
 entry_points:
   main:
     parameters:
-     n_clusters: {type: int, default:4}
+     n_clusters: {type: int, default: 4}
      init: {type: string, default: "k-means++"}
      max_iter: {type: int, default: 300}
      dataset: {type: string, default: "data_preprocessing.csv"}
